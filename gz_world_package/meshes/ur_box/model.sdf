@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+   <model name="ur_box">
+    <static>true</static>
+    <pose>5 5 0.35 0 0 -1.53</pose> <!-- Centered on ground, z = half height -->
+    <link name="kuka_link">
+        <collision name="collision">
+      <geometry>
+        <mesh>
+          <uri>/home/marat/exchange_project_ws/src/models/ur5e_model_pkg/meshes/ur_box/ur_box.dae</uri>
+        </mesh>
+      </geometry>
+        </collision>
+        <visual name="visual">
+      <geometry>
+        <mesh>
+          <uri>/home/marat/exchange_project_ws/src/models/ur5e_model_pkg/meshes/ur_box/ur_box.dae</uri>
+        </mesh>
+      </geometry>
+        </visual>
+    </link>
+    </model>
+</sdf>

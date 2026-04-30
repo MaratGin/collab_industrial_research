@@ -1,0 +1,203 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+<model name="bookshelf">
+    <static>0</static>
+    <link name="link">
+    <inertial>
+        <mass>1.000000</mass>
+    </inertial>
+    <collision name="back">
+        <pose>0.000000 0.005000 0.900000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.900000 0.010000 1.800000</size>
+        </box>
+        </geometry>
+    </collision>
+    <visual name="visual1">
+        <pose>0.000000 0.005000 0.900000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.900000 0.010000 1.800000</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/bookshelf/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>               
+            </metal>
+            </pbr>
+        </material>
+    </visual>
+    <collision name="left_side">
+        <pose>0.450000 -0.195000 0.900000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.020000 0.400000 1.800000</size>
+        </box>
+        </geometry>
+    </collision>
+    <visual name="visual2">
+        <pose>0.450000 -0.195000 0.900000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.020000 0.400000 1.800000</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/bookshelf/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>               
+            </metal>
+            </pbr>
+        </material>
+    </visual>
+    <collision name="right_side">
+        <pose>-0.450000 -0.195000 0.900000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.020000 0.400000 1.800000</size>
+        </box>
+        </geometry>
+    </collision>
+    <visual name="visual3">
+        <pose>-0.450000 -0.195000 0.900000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.020000 0.400000 1.800000</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/bookshelf/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>               
+            </metal>
+            </pbr>
+        </material>
+    </visual>
+    <collision name="bottom">
+        <pose>0.000000 -0.195000 0.40000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.880000 0.400000 0.8000</size>
+        </box>
+        </geometry>
+    </collision>
+    <visual name="visual4">
+        <pose>0.000000 -0.195000 0.40000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.880000 0.400000 0.80000</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/bookshelf/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>               
+            </metal>
+            </pbr>
+        </material>
+    </visual>
+    <collision name="top">
+        <pose>0.000000 -0.195000 1.80000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.880000 0.400000 0.020000</size>
+        </box>
+        </geometry>
+    </collision>
+    <visual name="visual5">
+        <pose>0.000000 -0.195000 1.80000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.880000 0.400000 0.020000</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/bookshelf/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>               
+            </metal>
+            </pbr>
+        </material>
+    </visual>
+    
+    <collision name="high_shelf">
+        <pose>0.000000 -0.195000 1.200000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.880000 0.400000 0.020000</size>
+        </box>
+        </geometry>
+    </collision>
+    <visual name="visual7">
+        <pose>0.000000 -0.195000 1.20000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.880000 0.400000 0.020000</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/bookshelf/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>               
+            </metal>
+            </pbr>
+        </material>
+    </visual>
+        
+        <collision name="high_shelf_2">
+        <pose>0.000000 -0.195000 1.500000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.880000 0.400000 0.020000</size>
+        </box>
+        </geometry>
+    </collision>
+    <visual name="visual8">
+        <pose>0.000000 -0.195000 1.500000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>0.880000 0.400000 0.020000</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/bookshelf/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>               
+            </metal>
+            </pbr>
+        </material>
+    </visual>
+    </link>
+    <pose>2.6 -2.8 0.0 0.0 0.0 -1.57</pose>
+</model>
+</sdf>

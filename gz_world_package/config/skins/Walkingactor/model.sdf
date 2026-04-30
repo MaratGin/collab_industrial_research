@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+    <actor name="actor">
+      <skin>
+        <filename>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/config/skins/Walkingactor/meshes/walk.dae</filename>
+        <scale>0.8</scale>
+      </skin>
+      <pose>0 0 1.2 0 0 0</pose>
+      <animation name="walk">
+        <filename>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/config/skins/Walkingactor/meshes/walk.dae</filename>
+        <scale>0.8</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+    </actor>
+</sdf>

@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="boss_arm_chair">
+    <static>true</static>
+    <link name="link">
+
+      <collision name="colision1">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/boss_arm_chair/meshes/boss_arm_chair.stl</uri>
+	    <scale> 0.01 0.01 0.01 </scale>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name="visual1">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/boss_arm_chair/meshes/boss_arm_chair.stl</uri>
+	    <scale> 0.01 0.01 0.01 </scale>
+          </mesh>
+        </geometry>
+        <material>
+            <!-- <ambient>0.5 0.5 0.5 0.5</ambient> -->
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/boss_arm_chair/materials/textures/test.png</albedo_map>
+                <roughness>0.7</roughness>
+                <metalness>0.3</metalness>
+            </metal>
+            </pbr>
+        </material>
+      </visual>
+<!-- 
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity> -->
+    </link>
+  </model>
+</sdf>
+
+
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/table/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>
+            </metal>
+            </pbr>
+        </material>

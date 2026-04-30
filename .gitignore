@@ -1,0 +1,6 @@
+real_case_impl/meta
+real_case_impl/AGENTS.md
+real_case_impl/.codex
+__pycache__/
+.vscode/
+gz_world_package/config/camera_models/top_best/*

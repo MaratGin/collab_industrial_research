@@ -1,0 +1,3688 @@
+<sdf version="1.10">
+  <world name='corridor'>
+    <physics type="ode">
+      <gravity>0.000000 0.000000 -9.810000</gravity>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>20</iters>
+          <sor>1.000000</sor>
+        </solver>
+        <constraints>
+          <cfm>0.000000</cfm>
+          <erp>0.200000</erp>
+          <contact_max_correcting_vel>100.000000</contact_max_correcting_vel>
+          <contact_surface_layer>0.000000</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>1000.000000</real_time_update_rate>
+      <max_step_size>0.001000</max_step_size>
+      <real_time_factor>1.000000</real_time_factor>
+      <max_contacts>20</max_contacts>
+    </physics>
+
+    <light name='sun' type='directional'>
+      <pose>0 0 10 0 0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>-0.5 0.10000000000000001 -0.90000000000000002</direction>
+      <diffuse>0.800000012 0.800000012 0.800000012 1</diffuse>
+      <specular>0.200000003 0.200000003 0.200000003 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <linear>0.0099999997764825821</linear>
+        <constant>0.89999997615814209</constant>
+        <quadratic>0.0010000000474974513</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+	  	  
+   <light name='point_light_0' type='point'>
+      <pose frame=''>-5 -1.8 3 0 0 0</pose>
+      <diffuse>0.05 0.05 0.05 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+	  
+   <light name='point_light_1' type='point'>
+      <pose frame=''>-5 -8 3 0 0 0</pose>
+      <diffuse>0.05 0.05 0.05 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>	  
+	  
+  <light name='point_light_2' type='point'>
+      <pose frame=''>5 -8 3 0 0 0</pose>
+      <diffuse>0.05 0.05 0.05 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+	  
+    <model name="ground_plane">
+      <static>1</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0.000000 0.000000 1.000000</normal>
+              <size>100.000000 100.000000</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100.000000</mu>
+                <mu2>50.000000</mu2>
+              </ode>
+            </friction>
+            <bounce />
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual">
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0.000000 0.000000 1.000000</normal>
+              <size>100.000000 100.000000</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>s
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+	<model name="wall_01_model">
+      <pose>-8 -8.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_01_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>25.00000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>25.00000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_02_model">
+      <pose>4.5 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_02_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_03_model">
+      <pose>5.3 -9.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_03_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+    <model name="wall_04_model">
+      <pose>6.0 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_04_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+     
+	  
+    <model name="wall_05_model">
+      <pose>9.0 -8.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_05_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_06_model">
+      <pose>12.0 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_06_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_07_model">
+      <pose>12.7 -9.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_07_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+    <model name="wall_08_model">
+      <pose>13.5 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_08_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_09_model">
+      <pose>16.0 -8.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_09_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>5.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+    <model name="wall_10_model">
+      <pose>19.0 -8.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_10_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_11_model">
+      <pose>22.0 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_11_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_12_model">
+      <pose>22.7 -9.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_12_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+    <model name="wall_13_model">
+      <pose>23.5 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_13_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_14_model">
+      <pose>26.0 -8.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_14_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>5.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_15_model">
+      <pose>29.0 -8.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_15_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_16_model">
+      <pose>32.0 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_16_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_17_model">
+      <pose>32.7 -9.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_17_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+    <model name="wall_19_model">
+      <pose>33.5 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_19_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_20_model">
+      <pose>36.0 -8.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_20_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>5.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+   <model name="wall_21_model">
+      <pose>40.0 -8.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_21_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_22_model">
+      <pose>43.0 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_22_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_23_model">
+      <pose>43.7 -9.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_23_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.500000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+    <model name="wall_24_model">
+      <pose>44.5 -9.3 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_24_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_25_model">
+      <pose>47.7 -8.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_25_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>6.500000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6.500000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    
+     <model name="wall_26_model">
+      <pose>51 -7.4 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_26_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 3.000000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 3.000000 2.000000</size>
+            </box>
+          </geometry>
+			
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+         <model name="wall_27_model">
+      <pose>-20.5 -7.4 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_27_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 3.000000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 3.000000 2.000000</size>
+            </box>
+          </geometry>	
+			
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+        <model name="wall_28_model">
+      <pose>48.0 -6 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_28_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_29_model">
+      <pose>43.4 -5.4 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_29_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+     <model name="wall_30_model">
+      <pose>45.1 -5.4 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_30_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 1.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+   <model name="wall_31_model">
+      <pose>44.25 -4.8 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_31_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.90000 0.20000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.900 0.20000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_32_model">
+      <pose>-1.15 2.0 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_32_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>8.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>8.000000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>		  
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    
+    <model name="wall_33_model">
+      <pose>-5.0 -2 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_33_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 8.000000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 8.000000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    <model name="wall_34_model">
+      <pose>2.7 -2 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_34_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.200000 8.000000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.200000 8.000000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+    <model name="wall_35_model">
+      <pose>-10.2 -6 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_35_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20.5000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20.50000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+    <model name="wall_36_model">
+      <pose>22.3 -6.0 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="wall_36_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>42.500000 0.200000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>42.500000 0.200000 2.000000</size>
+            </box>
+          </geometry>			
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+   
+	  
+	<scene>
+      <ambient>0.200000 0.200000 0.200000 1.000000</ambient>
+      <background>0.700000 0.700000 0.700000 1.000000</background>
+      <shadows>0</shadows>
+    </scene>
+  
+	  
+	
+  <model name="poster_1_model">
+      <pose>-4.88 -1.5 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="poster_1_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.01000 1.5000 1.500000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.01000 1.50000 1.500000</size>
+            </box>
+          </geometry>	
+			 <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/LIRS_wall</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+	  <model name="poster_2_model">
+      <pose>-20.4 -7.4 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="poster_2_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.01000 2.0000 2.000000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.01000 2.00000 2.000000</size>
+            </box>
+          </geometry>	
+			 <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/LIRS_wall</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+	  <model name="poster_3_model">
+      <pose>2.5 0 1.0 0.0 0.0 0.0</pose>
+      <static>1</static>
+      <link name="poster_3_body">
+        <inertial>
+          <mass>1.000000</mass>
+          <inertia>
+            <ixx>1.000000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>1.000000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>1.000000</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.01000 1.5000 1.500000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.01000 1.50000 1.500000</size>
+            </box>
+          </geometry>	
+			 <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/LIRS_wall</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+	  
+    <model name="bookshelf_1">
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.000000</mass>
+        </inertial>
+        <collision name="back">
+          <pose>0.000000 0.005000 0.900000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.900000 0.010000 1.800000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual1">
+          <pose>0.000000 0.005000 0.900000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.900000 0.010000 1.900000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="left_side">
+          <pose>0.450000 -0.195000 0.900000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.020000 0.400000 1.800000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual2">
+          <pose>0.450000 -0.195000 0.900000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.020000 0.400000 1.800000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="right_side">
+          <pose>-0.450000 -0.195000 0.900000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.020000 0.400000 1.800000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual3">
+          <pose>-0.450000 -0.195000 0.900000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.020000 0.400000 1.800000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="bottom">
+          <pose>0.000000 -0.195000 0.40000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 0.8000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual4">
+          <pose>0.000000 -0.195000 0.40000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 0.80000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="top">
+          <pose>0.000000 -0.195000 1.80000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 0.020000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual5">
+          <pose>0.000000 -0.195000 1.80000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 0.020000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        
+        <collision name="high_shelf">
+          <pose>0.000000 -0.195000 1.200000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 0.020000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual7">
+          <pose>0.000000 -0.195000 1.20000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 0.020000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+		  
+		   <collision name="high_shelf_2">
+          <pose>0.000000 -0.195000 1.500000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 0.020000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual8">
+          <pose>0.000000 -0.195000 1.500000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 0.020000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>2.6 -2.8 0.0 0.0 0.0 -1.57</pose>
+    </model>
+	  
+	<model name="wardrobe">
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.000000</mass>
+        </inertial>
+        <collision name="back">
+          <pose>0.000000 0.005000 0.900000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.900000 0.010000 1.800000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+		  
+        <collision name="bottom">
+          <pose>0.000000 -0.195000 0.90000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 1.8000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual4">
+          <pose>0.000000 -0.195000 0.90000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 1.80000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>2.6 -3.8 0.0 0.0 0.0 -1.57</pose>
+    </model>    
+	 
+    <model name="cabinet_1">
+      <static>0</static>
+      <link name="cabinet_bottom_plate">
+        <inertial>
+          <pose>0.000000 0.000000 -1.000000 0.000000 0.000000 0.000000</pose>
+          <inertia>
+            <ixx>2.050000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>2.050000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>2.050000</izz>
+          </inertia>
+          <mass>25.000000</mass>
+        </inertial>
+        <collision name="cabinet_bottom_plate_geom">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.0000 1.450000 1.00000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="cabinet_bottom_plate_geom_visual">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.00000 1.450000 1.0000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/Orange_table</name>
+            </script>
+          </material>
+        </visual>
+        
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>-4.2 -3 0.5 0.0 0.0 0.0</pose>
+    </model>
+   
+	<model name="cabinet_2">
+      <static>0</static>
+      <link name="cabinet_bottom_plate">
+        <inertial>
+          <pose>0.000000 0.000000 -1.000000 0.000000 0.000000 0.000000</pose>
+          <inertia>
+            <ixx>2.050000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>2.050000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>2.050000</izz>
+          </inertia>
+          <mass>25.000000</mass>
+        </inertial>
+        <collision name="cabinet_bottom_plate_geom">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.0000 1.450000 1.00000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="cabinet_bottom_plate_geom_visual">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.00000 1.450000 1.0000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/Orange_table</name>
+            </script>
+          </material>
+        </visual>
+        
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>-4.2 -4.7 0.5 0.0 0.0 0.0</pose>
+    </model>
+   
+	<model name="cabinet_3">
+      <static>0</static>
+      <link name="cabinet_bottom_plate">
+        <inertial>
+           <pose>0.000000 0.000000 -1.000000 0.000000 0.000000 0.000000</pose>
+          <inertia>
+            <ixx>2.050000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>2.050000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>2.050000</izz>
+          </inertia>
+          <mass>25.000000</mass>
+        </inertial>
+        <collision name="cabinet_bottom_plate_geom">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.4500 0.490000 .6000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="cabinet_bottom_plate_geom_visual">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.4500 0.490000 .6000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>2.260000 -4.650000 0.300000 0.000000 0.000000 0.000000</pose>
+    </model>      
+	  
+	<model name="cabinet_4">
+      <static>0</static>
+      <link name="cabinet_bottom_plate">
+        <inertial>
+           <pose>0.000000 0.000000 -1.000000 0.000000 0.000000 0.000000</pose>
+          <inertia>
+            <ixx>2.050000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>2.050000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>2.050000</izz>
+          </inertia>
+          <mass>25.000000</mass>
+        </inertial>
+        <collision name="cabinet_bottom_plate_geom">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.4500 0.490000 .6000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="cabinet_bottom_plate_geom_visual">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.4500 0.490000 .6000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>-0.50000 -5.67000 0.300000 0.000000 0.000000 0.000000</pose>
+    </model>      
+	 
+	  <model name="cabinet_5">
+      <static>0</static>
+      <link name="cabinet_bottom_plate">
+        <inertial>
+           <pose>0.000000 0.000000 -1.000000 0.000000 0.000000 0.000000</pose>
+          <inertia>
+            <ixx>2.050000</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>2.050000</iyy>
+            <iyz>0.000000</iyz>
+            <izz>2.050000</izz>
+          </inertia>
+          <mass>25.000000</mass>
+        </inertial>
+        <collision name="cabinet_bottom_plate_geom">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.4500 0.490000 .6000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="cabinet_bottom_plate_geom_visual">
+          <pose>0.000000 0.000000 0.010000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.4500 0.490000 .6000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>0.79 0.2000 0.300000 0.000000 0.000000 0.000000</pose>
+    </model>  
+	  
+    <model name="table_0">
+      <static>0</static>
+      <link name="link">
+        <collision name="surface">
+          <pose>0.000000 0.000000 0.800000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+  
+        <visual name="visual1">
+          <pose>0.000000 0.000000 0.8000000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+		  
+        <collision name="front_left_leg">
+            <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_left_leg">
+           <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+       
+		  
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>	
+      <pose>-4.30000 0.15000 0.000000 0.000000 0.000000 -1.570796</pose>
+  </model>
+	
+	<model name="table_01">
+      <static>0</static>
+		<link name="link">
+        <collision name="surface">
+          <pose>0.000000 0.000000 0.800000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+  
+        <visual name="visual1">
+          <pose>0.000000 0.000000 0.8000000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+		  
+        <collision name="front_left_leg">
+            <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_left_leg">
+           <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+       
+		  
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>	
+      <pose>-3.9000 1.40000 0.000000 0.000000 0.000000 0</pose>
+  </model>
+	
+	<model name="table_02">
+      <static>0</static>	
+  <link name="link">
+        <collision name="surface">
+          <pose>0.000000 0.000000 0.800000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+  
+        <visual name="visual1">
+          <pose>0.000000 0.000000 0.8000000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+		  
+        <collision name="front_left_leg">
+            <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_left_leg">
+           <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+       
+		  
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>		
+      <pose>-2.2000 1.40000 0.000000 0.000000 0.000000 0</pose>
+  </model>
+	
+	<model name="table_03">
+      <static>0</static>
+		<link name="link">
+        <collision name="surface">
+          <pose>0.000000 0.000000 0.800000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+  
+        <visual name="visual1">
+          <pose>0.000000 0.000000 0.8000000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+		  
+        <collision name="front_left_leg">
+            <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_left_leg">
+           <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+       
+		  
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>0.0000 1.1000 0.000000 0.000000 0.000000 -1.57</pose>
+  </model>
+	
+	<model name="table_04">
+      <static>0</static>
+		<link name="link">
+        <collision name="surface">
+          <pose>0.000000 0.000000 0.800000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+  
+        <visual name="visual1">
+          <pose>0.000000 0.000000 0.8000000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+		  
+        <collision name="front_left_leg">
+            <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_left_leg">
+           <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+       
+		  
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>	
+      <pose>0.8400 1.1000 0.000000 0.000000 0.000000 -1.57</pose>
+  </model>
+	
+    <model name="table_05">
+      <static>0</static>
+		<link name="link">
+        <collision name="surface">
+          <pose>0.000000 0.000000 0.800000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+  
+        <visual name="visual1">
+          <pose>0.000000 0.000000 0.8000000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+		  
+        <collision name="front_left_leg">
+            <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_left_leg">
+           <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+       
+		  
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>	
+      <pose>-1.470000 -2.5500 0.000000 0.000000 0.000000 -1.570796</pose>
+  </model>
+	 
+	<model name="table_06">
+      <static>0</static>    
+		<link name="link">
+        <collision name="surface">
+          <pose>0.000000 0.000000 0.800000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+  
+        <visual name="visual1">
+          <pose>0.000000 0.000000 0.8000000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+		  
+        <collision name="front_left_leg">
+            <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_left_leg">
+           <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+       
+		  
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>	
+      <pose>-.50000 -2.55000 0.000000 0.000000 0.000000 -1.570796</pose>
+  </model>
+	  
+	<model name="table_07">
+      <static>0</static>    
+		<link name="link">
+        <collision name="surface">
+          <pose>0.000000 0.000000 0.800000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+  
+        <visual name="visual1">
+          <pose>0.000000 0.000000 0.8000000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>1.500000 0.800000 0.030000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+		  
+        <collision name="front_left_leg">
+            <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_left_leg">
+           <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+        <collision name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="front_right_leg">
+            <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+              <box>
+              <size>0.0300000 0.800000 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/materials/scripts/lirs.material</uri>
+              <name>lirs/White_table</name>
+            </script>
+          </material>
+        </visual>
+       
+		  
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>	
+      <pose>-1.57000 -5.6000 0.000000 0.000000 0.000000 0</pose>
+  	</model>
+	  
+
+    <include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/boss_arm_chair</uri>
+      <name>chair_0</name>
+      <pose>-2.23 -2.32 0 0 0 -1.57</pose>
+    </include>
+	  
+    <include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/boss_arm_chair</uri>
+      <name>chair_1</name>
+      <pose>0.06 -2.7 0 0 0 1.65</pose>
+    </include>
+	  
+    <include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/boss_arm_chair</uri>
+      <name>chair_2</name>
+      <pose>-3.5 -0.02 0 0 0 1.57</pose>
+    </include>  
+
+    <include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/boss_arm_chair</uri>
+      <name>chair_3</name>
+      <pose>-2.4 0.67 0 0 0 0</pose>
+    </include>  
+	  
+	<include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/boss_arm_chair</uri>
+      <name>chair_4</name>
+      <pose>-0.83 1.02 0 0 0 -1.57</pose>
+    </include>  
+	  
+	<include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/boss_arm_chair</uri>
+      <name>chair_5</name>
+      <pose>1.86 0.81 0 0 0 1.57</pose>
+    </include>  
+	    
+		<include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/row_chair</uri>
+      <name>row_chair_1</name>
+      <pose>0 -8.43 0 0 0 3.14</pose>
+    </include>  	  
+
+		<include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/row_chair</uri>
+      <name>row_chair_2</name>
+      <pose>8 -8.43 0 0 0 3.14</pose>
+    </include>    
+	  
+    <include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/row_chair</uri>
+      <name>row_chair_3</name>
+      <pose>18 -8.43 0 0 0 3.14</pose>
+    </include> 
+	  
+   <include>
+      <uri>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/row_chair</uri>
+      <name>row_chair_4</name>
+      <pose>30 -8.43 0 0 0 3.14</pose>
+    </include>
+
+    
+	  
+    <!-- <state world_name="default">
+      <sim_time>0 0</sim_time>
+      <real_time>0 104450</real_time>
+      <wall_time>1372407649 371666453</wall_time>
+    </state> -->
+	  
+    <gui fullscreen="0">
+      <camera name="user_camera">
+        <pose>22.344100 -0.291183 16.243800 0.000000 0.627643 2.996190</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+
+    
+
+     <actor name="human_1">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1.000000</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+         <script>
+            <loop>true</loop>
+            <delay_start>0.000000</delay_start>
+            <auto_start>true</auto_start>
+            <trajectory id="1" type="walking">
+  
+		<waypoint>
+            <time>0</time>
+            <pose>10.0 -8.0 0 0 0 3.14</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>30</time>
+            <pose>-10 -8.0 0 0 0 3.14</pose>
+          </waypoint>
+		
+	  </trajectory>
+         </script>
+      </actor>
+
+          <actor name="human_2">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1.000000</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+         <script>
+            <loop>true</loop>
+            <delay_start>0.000000</delay_start>
+            <auto_start>true</auto_start>
+            <trajectory id="1" type="walking">
+  
+		<waypoint>
+            <time>0</time>
+            <pose>-10.0 -7.0 0 0 0 0</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>30</time>
+            <pose>10 -7.0 0 0 0 0</pose>
+          </waypoint>
+		
+	  </trajectory>
+         </script>
+      </actor>
+  </world>
+
+</sdf>

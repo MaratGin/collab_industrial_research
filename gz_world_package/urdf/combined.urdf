@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="dual_robot">
+  <!-- robot name parameter -->
+  <xacro:arg name="ur_name" default="ur5e"/>
+  <!-- import main macro -->
+  <xacro:include filename="$(find ur5e_model_pkg)/urdf/ur_macro.xacro"/>
+  <xacro:include filename="$(find ur5e_model_pkg)/urdf/ur5e_ros2_control.xacro" />
+  <xacro:include filename="$(find onrobot_2fg7_description)/urdf/onrobot_2fg7.xacro"/>
+  <!-- <xacro:onrobot_2fg7_gripper prefix="onrobot"/> -->
+  <xacro:arg name="gripper_prefix" default="ur5e_onrobot_"/>
+
+    <!-- <xacro:include filename="$(find ur5e_model_pkg)/urdf/camera.xacro" /> -->
+
+
+  <!-- possible 'ur_type' values: ur3, ur5, ur10, ur3e, ur5e, ur7e, ur10e, ur12e, ur16e, ur8long, ur15, ur18, ur20, ur30 -->
+  <!-- the default value should raise an error in case this was called without defining the type -->
+  <xacro:arg name="ur_type" default="ur5e"/>
+
+  <!-- parameters -->
+
+  <xacro:arg name="ros_namespace" default="ur5e" />
+  <xacro:arg name="ur_tf_prefix" default="ur5e" />
+  <xacro:arg name="joint_limit_params" default="$(find ur_description)/config/$(arg ur_type)/joint_limits.yaml"/>
+  <xacro:arg name="kinematics_params" default="$(find ur_description)/config/$(arg ur_type)/default_kinematics.yaml"/>
+  <xacro:arg name="physical_params" default="$(find ur_description)/config/$(arg ur_type)/physical_parameters.yaml"/>
+  <xacro:arg name="visual_params" default="$(find ur_description)/config/$(arg ur_type)/visual_parameters.yaml"/>
+  <xacro:arg name="transmission_hw_interface" default=""/>
+  <xacro:arg name="safety_limits" default="false"/>
+  <xacro:arg name="safety_pos_margin" default="0.15"/>
+  <xacro:arg name="safety_k_position" default="20"/>
+  <xacro:arg name="mock_sensor_commands" default="false" />
+
+  <!--When using gazebo simulations absolute paths are necessary.-->
+  <xacro:arg name="force_abs_paths" default="true" />
+
+  <!-- initial position for simulations (Mock Hardware, Gazebo, Ignition) -->
+  <xacro:arg name="initial_positions_file" default="$(find ur5e_model_pkg)/config/initial_positions.yaml"/>
+
+  <xacro:arg name="simulation_controllers" default="$(find ur5e_model_pkg)/config/ur5e_controllers.yaml" />
+
+  <!-- convert to property to use substitution in function -->
+  <xacro:property name="initial_positions_file" default="$(arg initial_positions_file)"/>
+
+  <!-- create link fixed to the "world" -->
+  <link name="world" />
+
+  <!-- arm -->
+  <xacro:ur_robot
+    name="$(arg ur_name)"
+    tf_prefix="$(arg ur_tf_prefix)"
+    parent="world"
+    joint_limits_parameters_file="$(arg joint_limit_params)"
+    kinematics_parameters_file="$(arg kinematics_params)"
+    physical_parameters_file="$(arg physical_params)"
+    visual_parameters_file="$(arg visual_params)"
+    safety_limits="$(arg safety_limits)"
+    safety_pos_margin="$(arg safety_pos_margin)"
+    safety_k_position="$(arg safety_k_position)"
+    force_abs_paths="$(arg force_abs_paths)"
+    >
+    <origin xyz="0 0 0" rpy="0 0 0" />          <!-- position robot in the world -->
+  </xacro:ur_robot>
+
+  <link name="ground_plane">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="5 5 0"/>
+      </geometry>
+      <material name="ground_white">
+        <color rgba="1 1 1 0.5"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="5 5 0"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="ground_plane_joint" type="fixed">
+    <origin xyz="0 0 -0.01" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="ground_plane"/>
+  </joint>
+
+
+  <xacro:onrobot_2fg7_with_fingertips prefix="$(arg gripper_prefix)" parent="$(arg ur_tf_prefix)tool0">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:onrobot_2fg7_with_fingertips>
+
+
+
+
+
+  <!-- OLD VERSION OF GRIPPER CONNECTION
+  <joint name="ur5e_gripper_mount_joint" type="fixed">
+  <parent link="$(arg tf_prefix)tool0"/>
+  <child link="$(arg gripper_prefix)_base_link"/>
+  <origin xyz="0 0 0.0" rpy="0 0 0"/>   
+  </joint> -->
+
+  <!-- ros2 control instance -->
+  <xacro:ur_ros2_control
+    name="$(arg ur_name)"
+    namespace="$(arg ros_namespace)"
+    tf_prefix="$(arg ur_tf_prefix)"
+    initial_positions="${xacro.load_yaml(initial_positions_file)}"
+  />
+
+
+
+
+  <!-- ========================= -->
+  <!-- Arguments                -->
+  <!-- ========================= -->
+
+  <xacro:arg name="name" default="kuka"/>
+  <xacro:arg name="tf_prefix" default="kuka" />
+  <xacro:arg name="robot_namespace" default="kuka" />
+
+  <xacro:arg name="transmission_hw_interface" default=""/>
+
+  <!-- ========================= -->
+  <!-- Includes                 -->
+  <!-- ========================= -->
+
+  <xacro:include filename="$(find kuka_kr3_model)/urdf/kuka_ros2_control.urdf.xacro" />
+  <xacro:include filename="$(find egp64_schunk_gripper_description)/urdf/egp64_schunk_gripper.urdf.xacro" />
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find kuka_kr3_model)/urdf/kuka_resources/common_materials.xacro" />
+
+  <!-- kuka_kr3 -->
+  <xacro:include filename="$(find kuka_kr3_model)/urdf/kuka_kr3.xacro" />
+
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface" />
+  
+  <xacro:kuka_kr3_robot name="$(arg name)" prefix="$(arg tf_prefix)" />
+
+  <!-- <link name="world" /> -->
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "$(arg tf_prefix)base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+
+  <link name="$(arg tf_prefix)ground_plane">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="5 5 0"/>
+      </geometry>
+      <material name="ground_white">
+        <color rgba="1 1 1 0.5"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="5 5 0"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="$(arg tf_prefix)ground_plane_joint" type="fixed">
+    <origin xyz="0 0 -0.01" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="$(arg tf_prefix)ground_plane"/>
+  </joint>
+
+
+
+
+  <!-- Schunk coupler (LINK): -->
+  <link name="$(arg tf_prefix)schunk_coupler">
+    <visual>
+          <geometry>
+            <mesh filename="file://$(find egp64_schunk_gripper_description)/meshes/Schunk Gripper - ADAPTER.dae" />
+          </geometry>
+        </visual>
+        <collision>
+          <geometry>
+            <mesh filename="file://$(find egp64_schunk_gripper_description)/meshes/Schunk Gripper - ADAPTER.dae" />
+          </geometry>
+        </collision>
+        <inertial>
+          <origin xyz="0 0 0" rpy="0 0 ${pi/4}" />
+          <mass value="0.001" />
+          <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+        </inertial>
+      </link>
+
+      <!-- Schunk coupler (JOINT): -->
+      <joint name="$(arg tf_prefix)schunk_coupler_joint" type="fixed">
+        <origin xyz="0 0 0.001" rpy="0 0 0" />
+        <parent link="$(arg tf_prefix)tool0"/>
+        <child link="$(arg tf_prefix)schunk_coupler"/>
+      </joint>  
+  
+  <!-- ========================= -->
+  <!-- Schunk EGP64 Gripper     -->
+  <!-- ========================= -->
+    <xacro:egp64_schunk_gripper prefix="$(arg tf_prefix)" parent="$(arg tf_prefix) schunk_coupler" >
+    <origin xyz="-0.03205 0.01812 0.02047" rpy="0 0 0"/>
+  </xacro:egp64_schunk_gripper> 
+
+
+  <!-- ========================= -->
+  <!-- ROS2 Control             -->
+  <!-- ========================= -->
+
+  <xacro:ros2_control
+  name="$(arg name)"
+  namespace="$(arg robot_namespace)"
+  tf_prefix="$(arg tf_prefix)"
+  controllers_file="$(find kuka_kr3_model)/config/kuka_controllers.yaml"
+  use_gripper="true"
+  />
+</robot>
+
+<!-- mock_sensor_commands="$(arg mock_sensor_commands)" -->
+
+  <!-- <xacro:onrobot_2fg7
+    prefix="$(arg gripper_prefix)"
+    parent="$(arg tf_prefix)tool0">
+
+      IMPORTANT:
+      These values are a STARTING GUESS only.
+      You will almost certainly need to tune xyz/rpy
+      according to the actual mechanical adapter orientation.
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+
+  </xacro:onrobot_2fg7>
+  Here is my ros2 topic list after launching gazebo:
+/clock
+/diagnostics
+/parameter_events
+/rosout
+/tf
+/tf_static
+/ur5e/controller_manager/activity
+/ur5e/controller_manager/introspection_data/full
+/ur5e/controller_manager/introspection_data/names
+/ur5e/controller_manager/introspection_data/values
+/ur5e/controller_manager/statistics/full
+/ur5e/controller_manager/statistics/names
+/ur5e/controller_manager/statistics/values
+/ur5e/joint_states
+/ur5e/robot_description
+Is it okay, that /tf and /tf_static is not namespaced?
+  
+  
+   -->

@@ -1,0 +1,61 @@
+robots:
+  ur5e:
+    joint_state_topic: /ur5e/joint_states
+    controllers:
+      arm:
+        action_name: /ur5e/scaled_joint_trajectory_controller/follow_joint_trajectory
+        action_type: follow_joint_trajectory
+        joint_names:
+          - shoulder_pan_joint
+          - shoulder_lift_joint
+          - elbow_joint
+          - wrist_1_joint
+          - wrist_2_joint
+          - wrist_3_joint
+        goal_tolerance_sec: 1.0
+      gripper:
+        action_name: /ur5e/onrobot_gripper_controller/gripper_cmd
+        action_type: gripper_command
+        joint_names:
+          - onrobot_gripper_joint
+        max_effort: 40.0
+    tasks:
+      HOME:
+        task_name: home
+        steps:
+          - name: open_gripper
+            controller: gripper
+            positions: [0.0]
+            duration: 1.0
+          - name: move_home
+            controller: arm
+            positions: [0.0, -1.57, 0.0, -1.57, 0.0, 0.0]
+            duration: 6.0
+      START_PICK_AND_PLACE_TO_HANDOVER:
+        task_name: pick_and_place_to_handover
+        steps:
+          - name: approach_pick
+            controller: arm
+            positions: [-0.14, -1.31, 1.2917, -1.502, -1.3430, 1.154]
+            duration: 6.0
+          - name: open_gripper
+            controller: gripper
+            positions: [0.0]
+            duration: 1.0
+          - name: descend_to_pick
+            controller: arm
+            positions: [1.42311, -2.0942, 1.2917, -1.5024, -1.3430, 1.1543]
+            duration: 6.0
+          - name: close_pick_gripper
+            controller: gripper
+            positions: [0.08]
+            duration: 1.0
+          - name: lift_and_move_to_handover
+            controller: arm
+            positions: [2.7925, -2.0942, 1.2917, -1.5024, -1.3430, 1.1543]
+            duration: 6.0
+          - name: release_to_handover
+            controller: gripper
+            positions: [0.0]
+            duration: 1.0
+

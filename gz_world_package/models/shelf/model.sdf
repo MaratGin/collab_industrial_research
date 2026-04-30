@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+<model name="shelf">
+      <static>0</static>
+      <link name="link">
+        <inertial>
+          <mass>1.000000</mass>
+        </inertial>
+        <collision name="back">
+          <pose>0.000000 0.005000 0.900000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.900000 0.010000 1.800000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+		  
+        <collision name="bottom">
+          <pose>0.000000 -0.195000 0.90000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 1.8000</size>
+            </box>
+          </geometry>
+          <surface>
+            <bounce />
+            <friction>
+              <ode />
+            </friction>
+            <contact>
+              <ode />
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name="visual4">
+          <pose>0.000000 -0.195000 0.90000 0.000000 0.000000 0.000000</pose>
+          <geometry>
+            <box>
+              <size>0.880000 0.400000 1.80000</size>
+            </box>
+          </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/shelf/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>               
+            </metal>
+            </pbr>
+        </material>
+        </visual>
+        
+        <velocity_decay>
+          <linear>0.000000</linear>
+          <angular>0.000000</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>2.6 -3.8 0.0 0.0 0.0 -1.57</pose>
+    </model>    
+</sdf>

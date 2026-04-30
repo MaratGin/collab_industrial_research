@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+<model name="table">
+    <static>0</static>    
+    <link name="link">
+    <collision name="surface">
+        <pose>0.000000 0.000000 0.800000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>1.500000 0.800000 0.030000</size>
+        </box>
+        </geometry>
+        <surface>
+        <bounce />
+        <friction>
+            <ode />
+        </friction>
+        <contact>
+            <ode />
+        </contact>
+        </surface>
+        <max_contacts>10</max_contacts>
+    </collision>
+
+    <visual name="visual1">
+        <pose>0.000000 0.000000 0.8000000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+        <box>
+            <size>1.500000 0.800000 0.030000</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/table/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>
+            </metal>
+            </pbr>
+        </material>
+
+    </visual>
+        
+    <collision name="front_left_leg">
+        <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+            <box>
+            <size>0.0300000 0.800000 0.8</size>
+        </box>
+        </geometry>
+        <surface>
+        <bounce />
+        <friction>
+            <ode />
+        </friction>
+        <contact>
+            <ode />
+        </contact>
+        </surface>
+        <max_contacts>10</max_contacts>
+    </collision>
+    <visual name="front_left_leg">
+        <pose>0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+            <box>
+            <size>0.0300000 0.800000 0.8</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/table/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>               
+            </metal>
+            </pbr>
+        </material>
+    </visual>
+    <collision name="front_right_leg">
+        <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+            <box>
+            <size>0.0300000 0.800000 0.8</size>
+        </box>
+        </geometry>
+        <surface>
+        <bounce />
+        <friction>
+            <ode />
+        </friction>
+        <contact>
+            <ode />
+        </contact>
+        </surface>
+        <max_contacts>10</max_contacts>
+    </collision>
+    <visual name="front_right_leg">
+        <pose>-0.680000 0.00000 0.400000 0.000000 0.000000 0.000000</pose>
+        <geometry>
+            <box>
+            <size>0.0300000 0.800000 0.8</size>
+        </box>
+        </geometry>
+        <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+            <metal>
+                <albedo_map>/home/marat/exchange_project_ws/src/collab_industrial_research/gz_world_package/models/table/materials/textures/white_table.png</albedo_map>
+                <roughness>0.8</roughness>
+                <metalness>0.1</metalness>
+            </metal>
+            </pbr>
+        </material>
+    </visual>
+    
+        
+    <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+    </velocity_decay>
+    <self_collide>0</self_collide>
+    <kinematic>0</kinematic>
+    <gravity>1</gravity>
+    </link>	
+    <pose>-1.57000 -5.6000 0.000000 0.000000 0.000000 0</pose>
+</model>
+</sdf>

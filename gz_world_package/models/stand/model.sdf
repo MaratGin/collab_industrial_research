@@ -1,0 +1,82 @@
+<sdf version="1.9">
+  <model name="camera_stand">
+    <static>true</static>
+
+    <link name="stand_link">
+
+      <!-- ================= BASE ================= -->
+      <collision name="base_collision">
+        <pose>0 0 0.025 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.25</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="base_visual">
+        <pose>0 0 0.025 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.25</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.3 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- ================= POLE ================= -->
+      <collision name="pole_collision">
+        <pose>0 0 0.55 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.03</radius>
+            <length>1.0</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="pole_visual">
+        <pose>0 0 0.55 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.03</radius>
+            <length>1.0</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.6 0.6 0.6 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- ================= CAMERA PLATE ================= -->
+      <collision name="plate_collision">
+        <pose>0 0 1.05 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.15 0.10 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="plate_visual">
+        <pose>0 0 1.05 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.15 0.10 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+
+    </link>
+  </model>
+</sdf>

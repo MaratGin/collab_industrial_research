@@ -1,0 +1,8 @@
+Now i want to create GUI App for operator, because it's quite hard to control the system using topics.
+What app should have:
+- Being able to send operator commands using buttons (Start, Stop, Reset and other). Pay most attention for emergency stop button and handling emergency situation
+- See current status of each robot
+- When emergency stop triggered, make some kind of notification (Pop-up or change color of interface)
+- Also it could be good to be able to see cameras of visual safety system (maybe add button "watch cameras" and open cameras, but it's up to you )
+- Make interface comfortable for human operator
+- You can add new functionality, if you think it can be useful
