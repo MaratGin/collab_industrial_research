@@ -31,6 +31,7 @@ ament_python_install_package(${PROJECT_NAME})
 
 install(PROGRAMS
         scripts/combined_safety_classifier.py
+        scripts/display_basler_cameras.py
         scripts/operator_gui_app.py
         scripts/supervisor_node.py
         scripts/ur_adapter_node.py
